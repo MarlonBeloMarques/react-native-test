@@ -1,8 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { ActivityIndicator } from "react-native";
-import TeamsList from "../src/components/TeamsList";
-import App from "../App";
+import TeamsList from "../../src/components/TeamsList";
+import App from "../../App";
 
 // test("renders correctly", () => {
 //   const tree = renderer.create(<App />).toJSON();
