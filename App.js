@@ -4,13 +4,28 @@ import { StyleSheet, Text, View } from 'react-native';
 import TeamsList from './src/components/TeamsList';
 
 export default function App() {
+  const list = [
+    {
+      id: "1",
+      name: "barcelona",
+    },
+    {
+      id: "2",
+      name: "real madrid",
+    },
+    {
+      id: "3",
+      name: "são paulo",
+    },
+  ];
+
   return (
     <View style={styles.container}>
       <Text style={styles.welcome}>Welcome to React Native!</Text>
       <Text style={styles.instructions}>
         This is a React Native snapshot test.
       </Text>
-      <TeamsList size="large"/>
+      <TeamsList size="large" list={list}/>
     </View>
   );
 }

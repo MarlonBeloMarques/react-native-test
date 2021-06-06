@@ -45,3 +45,14 @@ it("renders props", () => {
   expect(TeamsListRendered.props.size).toBeTruthy();
   expect(TeamsListRendered.props.size).toEqual('large')
 });
+
+it("renders list length", () => {
+  const rendered = renderer.create(<App />);
+  const TeamsListRendered = rendered.root.findByType(TeamsList);
+  expect(TeamsListRendered.props.list.length).toEqual(3);
+
+  const list = TeamsListRendered.props.list;
+  list.forEach((el, index) => {
+    expect(el.id).toEqual(list[index].id)
+  });
+});
