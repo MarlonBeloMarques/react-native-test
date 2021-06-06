@@ -1,9 +1,9 @@
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
-const TeamsList = () => {
+const TeamsList = ({ size }) => {
   return <View>
-    <ActivityIndicator animating />
+    <ActivityIndicator animating size={size} />
   </View>;
 }
 

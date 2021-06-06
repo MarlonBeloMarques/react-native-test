@@ -38,3 +38,10 @@ it("renders welcome", () => {
     true
   );
 });
+
+it("renders props", () => {
+  const rendered = renderer.create(<App />);
+  const TeamsListRendered = rendered.root.findByType(TeamsList);
+  expect(TeamsListRendered.props.size).toBeTruthy();
+  expect(TeamsListRendered.props.size).toEqual('large')
+});

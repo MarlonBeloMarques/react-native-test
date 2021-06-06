@@ -10,7 +10,7 @@ export default function App() {
       <Text style={styles.instructions}>
         This is a React Native snapshot test.
       </Text>
-      <TeamsList/>
+      <TeamsList size="large"/>
     </View>
   );
 }
