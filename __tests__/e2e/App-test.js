@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Button, Text, View } from "react-native";
 import renderer from "react-test-renderer";
 import { ActivityIndicator } from "react-native";
 import TeamsList from "../../src/components/TeamsList";
-import App from "../../App";
+import App from "../../App";      
 
 test("renders correctly", () => {
   const tree = renderer.create(<App />).toJSON();
@@ -55,4 +55,38 @@ it("renders list length", () => {
   list.forEach((el, index) => {
     expect(el.id).toEqual(list[index].id)
   });
+});
+
+test("should toggle children nodes on button click", () => {
+  const { act } = renderer;
+  
+  const root = renderer.create(<App/>).root;
+
+  // helper to get nodes other than "button"
+  const getChildrenCount = () =>
+    root.findAll((node) => node.type !== Button).length;
+
+  // assert that button exists
+  expect(root.findAllByType(Button).length).toEqual(1);
+
+  // query for a button
+  const button = root.findAllByType(Button)[0];
+
+  // remember initial nodes count (before toggle)
+  const initialCount = getChildrenCount();
+
+  // trigger a hook by calling onClick of a button
+  act(button.props.onPress);
+  const countAfterFirstClick = getChildrenCount();
+
+  // assert that nodes count after a click is greater than before
+  expect(countAfterFirstClick > initialCount).toBe(true);
+
+  
+  // trigger another click
+  act(button.props.onPress);
+  const countAfterSecondClick = getChildrenCount();
+
+  // check that nodes were toggled off and the count of rendered nodes match initial
+  expect(countAfterSecondClick === initialCount).toBe(true);
 });

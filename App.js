@@ -1,9 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import TeamsList from './src/components/TeamsList';
 
 export default function App() {
+  const [isVisible, setVisibility] = useState(false);
+
+  const toggle = () => setVisibility(!isVisible);
+
   const list = [
     {
       id: "1",
@@ -25,7 +29,9 @@ export default function App() {
       <Text style={styles.instructions}>
         This is a React Native snapshot test.
       </Text>
-      <TeamsList size="large" list={list}/>
+      <TeamsList size="large" list={list} />
+      <Button title="Click" onPress={toggle}></Button>
+      {isVisible && <Text>Visible</Text>}
     </View>
   );
 }
